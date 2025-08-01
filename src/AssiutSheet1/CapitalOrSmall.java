@@ -1,30 +1,25 @@
-//package AssiutSheet1;
+package AssiutSheet1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
-import static java.lang.Integer.*;
+import static java.lang.Integer.parseInt;
 
-public class Brothers {
+public class CapitalOrSmall {
     public static void main(String[] args) {
-        FastReader fr = new FastReader();
+      FastReader fr = new FastReader();
         PrintWriter pw = new PrintWriter(System.out);
 
         // Your solution logic goes here
         String s1 = fr.nextLine();
-        String lastname1 = s1.split(" ")[1];
-        String s2 = fr.nextLine();
-        String lastname2 = s2.split(" ")[1];
-
-        if (Objects.equals(lastname1, lastname2)) {
-            pw.println("ARE Brothers");
-
-        } else pw.println("NOT");
+//        if () {
+//            pw.println("ARE Brothers");
+//
+//        } else pw.println("NOT");
 
 
         pw.flush();
@@ -72,4 +67,5 @@ public class Brothers {
             return str;
         }
     }
+
 }
