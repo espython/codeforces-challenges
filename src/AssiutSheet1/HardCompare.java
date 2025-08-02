@@ -4,34 +4,35 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
+import static java.lang.Math.pow;
 
-public class CapitalOrSmall {
+public class HardCompare {
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter pw = new PrintWriter(System.out);
+        long l1 = fr.nextLong();
+        long r1 = fr.nextLong();
+        long l2 = fr.nextLong();
+        long r2 = fr.nextLong();
 
-        // Your solution logic goes here
-        String s1 = fr.nextLine();
-        char c = s1.charAt(0);
-        if (c >= '0' && c <= '9') {
-            pw.println("IS DIGIT");
-        } else if (c >= 'A' && c <= 'Z') {
-            pw.println("ALPHA");
-            pw.println("IS CAPITAL");
-
-        } else if (c >= 'a' && c <= 'z') {
-            pw.println("ALPHA");
-            pw.println("IS SMALL");
-
-        }
+        double log1 = r1 * Math.log(l1);
+        double log2 = r2 * Math.log(l2);
 
 
+        if (log1 > log2) {
+            pw.println("YES");
+        } else pw.println("NO");
+//8376260 70 8376259 70
         pw.flush();
         pw.close();
     }
+
 
     static class FastReader {
         BufferedReader br;
@@ -61,7 +62,7 @@ public class CapitalOrSmall {
         }
 
         double nextDouble() {
-            return Double.parseDouble(next());
+            return parseDouble(next());
         }
 
         String nextLine() {
@@ -74,5 +75,4 @@ public class CapitalOrSmall {
             return str;
         }
     }
-
 }

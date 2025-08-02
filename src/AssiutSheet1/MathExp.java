@@ -6,32 +6,48 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
-public class CapitalOrSmall {
+public class MathExp {
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter pw = new PrintWriter(System.out);
+        long n1 = fr.nextLong();
+        String sign = fr.next();
+        long n2 = fr.nextLong();
+        String eq = fr.next();
+        long result = fr.nextLong();
+        final String plus = "+";
+        final String minus = "-";
+        final String mult = "*";
 
-        // Your solution logic goes here
-        String s1 = fr.nextLine();
-        char c = s1.charAt(0);
-        if (c >= '0' && c <= '9') {
-            pw.println("IS DIGIT");
-        } else if (c >= 'A' && c <= 'Z') {
-            pw.println("ALPHA");
-            pw.println("IS CAPITAL");
-
-        } else if (c >= 'a' && c <= 'z') {
-            pw.println("ALPHA");
-            pw.println("IS SMALL");
-
+        switch (sign){
+            case plus :
+                if(n1 + n2 == result){
+                    pw.println("Yes");
+                }else pw.println(n1+n2);
+                break;
+            case minus :
+                if(n1 - n2 == result){
+                    pw.println("Yes");
+                }else pw.println(n1-n2);
+                break;
+            case mult :
+                if(n1 * n2 == result){
+                    pw.println("Yes");
+                }else pw.println(n1*n2);
+                break;
         }
+
+
+
 
 
         pw.flush();
         pw.close();
     }
+
 
     static class FastReader {
         BufferedReader br;
@@ -61,7 +77,7 @@ public class CapitalOrSmall {
         }
 
         double nextDouble() {
-            return Double.parseDouble(next());
+            return parseDouble(next());
         }
 
         String nextLine() {
@@ -74,5 +90,4 @@ public class CapitalOrSmall {
             return str;
         }
     }
-
 }

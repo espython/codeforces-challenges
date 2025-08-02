@@ -4,34 +4,41 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
-import static java.lang.Integer.parseInt;
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.*;
 
-public class CapitalOrSmall {
+public class Last2Digits {
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter pw = new PrintWriter(System.out);
+        long l1 = fr.nextLong();
+        long r1 = fr.nextLong();
+        long l2 = fr.nextLong();
+        long r2 = fr.nextLong();
 
-        // Your solution logic goes here
-        String s1 = fr.nextLine();
-        char c = s1.charAt(0);
-        if (c >= '0' && c <= '9') {
-            pw.println("IS DIGIT");
-        } else if (c >= 'A' && c <= 'Z') {
-            pw.println("ALPHA");
-            pw.println("IS CAPITAL");
+        BigInteger result = BigInteger.valueOf(l1)
+                .multiply(BigInteger.valueOf(r1))
+                .multiply(BigInteger.valueOf(l2))
+                .multiply(BigInteger.valueOf(r2));
 
-        } else if (c >= 'a' && c <= 'z') {
-            pw.println("ALPHA");
-            pw.println("IS SMALL");
-
+        // Get last 2 digits
+        BigInteger lastTwoDigits = result.remainder(BigInteger.valueOf(100));
+        if (lastTwoDigits.compareTo(BigInteger.valueOf(10)) < 0) {
+            pw.println("0" + lastTwoDigits); // Add leading zero if needed
+        } else {
+            pw.println(lastTwoDigits);
         }
 
+
+//        434500145 147276606 217842775 236387740
 
         pw.flush();
         pw.close();
     }
+
 
     static class FastReader {
         BufferedReader br;
@@ -61,7 +68,7 @@ public class CapitalOrSmall {
         }
 
         double nextDouble() {
-            return Double.parseDouble(next());
+            return parseDouble(next());
         }
 
         String nextLine() {
@@ -74,5 +81,4 @@ public class CapitalOrSmall {
             return str;
         }
     }
-
 }

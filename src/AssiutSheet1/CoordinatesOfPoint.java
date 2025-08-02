@@ -6,32 +6,48 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
-public class CapitalOrSmall {
+public class CoordinatesOfPoint {
+
+
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter pw = new PrintWriter(System.out);
+        /**
+         * Print Q1, Q2, Q3, Q4 according to the quarter in which the point belongs to.
+         * Print "Origem" If the point is at the origin.
+         * Print "Eixo X" If the point is over X axis.
+         * Print "Eixo Y" if the point is over Y axis.
+         */
 
         // Your solution logic goes here
-        String s1 = fr.nextLine();
-        char c = s1.charAt(0);
-        if (c >= '0' && c <= '9') {
-            pw.println("IS DIGIT");
-        } else if (c >= 'A' && c <= 'Z') {
-            pw.println("ALPHA");
-            pw.println("IS CAPITAL");
 
-        } else if (c >= 'a' && c <= 'z') {
-            pw.println("ALPHA");
-            pw.println("IS SMALL");
-
+        double x = fr.nextDouble();
+        double y = fr.nextDouble();
+        if (x == 0 && y == 0) {
+            pw.println("Origem");
+        } else if (x == 0) {
+            pw.println("Eixo X");
+        } else if (y == 0) {
+            pw.println("Eixo Y");
+        } else if (x > 0 && y > 0) {
+            pw.println("Q1");
+        } else if (x < 0 && y > 0) {
+            pw.println("Q2");
+        }else if (x < 0 && y < 0) {
+            pw.println("Q3");
+        }
+        else if (x > 0 && y < 0) {
+            pw.println("Q4");
         }
 
 
         pw.flush();
         pw.close();
     }
+
 
     static class FastReader {
         BufferedReader br;
@@ -61,7 +77,7 @@ public class CapitalOrSmall {
         }
 
         double nextDouble() {
-            return Double.parseDouble(next());
+            return parseDouble(next());
         }
 
         String nextLine() {
@@ -74,5 +90,4 @@ public class CapitalOrSmall {
             return str;
         }
     }
-
 }

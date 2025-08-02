@@ -6,32 +6,31 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.*;
 import static java.lang.Integer.parseInt;
 
-public class CapitalOrSmall {
+public class TwoInterval {
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter pw = new PrintWriter(System.out);
+        Integer l1 = fr.nextInt();
+        Integer r1 = fr.nextInt();
+        Integer l2 = fr.nextInt();
+        Integer r2 = fr.nextInt();
 
-        // Your solution logic goes here
-        String s1 = fr.nextLine();
-        char c = s1.charAt(0);
-        if (c >= '0' && c <= '9') {
-            pw.println("IS DIGIT");
-        } else if (c >= 'A' && c <= 'Z') {
-            pw.println("ALPHA");
-            pw.println("IS CAPITAL");
+        if(max(l1,l2) > min(r1,r2)){
+            pw.println(-1);
+        } else pw.println(max(l1,l2) + " "+ min(r1,r2));
 
-        } else if (c >= 'a' && c <= 'z') {
-            pw.println("ALPHA");
-            pw.println("IS SMALL");
 
-        }
+
 
 
         pw.flush();
         pw.close();
     }
+
 
     static class FastReader {
         BufferedReader br;
@@ -61,7 +60,7 @@ public class CapitalOrSmall {
         }
 
         double nextDouble() {
-            return Double.parseDouble(next());
+            return parseDouble(next());
         }
 
         String nextLine() {
@@ -74,5 +73,4 @@ public class CapitalOrSmall {
             return str;
         }
     }
-
 }

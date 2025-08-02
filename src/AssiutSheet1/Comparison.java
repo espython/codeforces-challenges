@@ -6,32 +6,46 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
-public class CapitalOrSmall {
+public class Comparison {
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter pw = new PrintWriter(System.out);
+        long n1 = fr.nextLong();
+        String sign = fr.next();
+        long n2 = fr.nextLong();
+        final String gt = ">";
+        final String lt = "<";
+        final String equal = "=";
 
-        // Your solution logic goes here
-        String s1 = fr.nextLine();
-        char c = s1.charAt(0);
-        if (c >= '0' && c <= '9') {
-            pw.println("IS DIGIT");
-        } else if (c >= 'A' && c <= 'Z') {
-            pw.println("ALPHA");
-            pw.println("IS CAPITAL");
-
-        } else if (c >= 'a' && c <= 'z') {
-            pw.println("ALPHA");
-            pw.println("IS SMALL");
-
+        switch (sign){
+            case gt :
+                if(n1 > n2){
+                    pw.println("Right");
+                }else pw.println("Wrong");
+                break;
+            case lt :
+                if(n1 < n2){
+                    pw.println("Right");
+                }else pw.println("Wrong");
+                break;
+            case equal :
+                if(n1 == n2){
+                    pw.println("Right");
+                }else pw.println("Wrong");
+                break;
         }
+
+
+
 
 
         pw.flush();
         pw.close();
     }
+
 
     static class FastReader {
         BufferedReader br;
@@ -61,7 +75,7 @@ public class CapitalOrSmall {
         }
 
         double nextDouble() {
-            return Double.parseDouble(next());
+            return parseDouble(next());
         }
 
         String nextLine() {
@@ -74,5 +88,4 @@ public class CapitalOrSmall {
             return str;
         }
     }
-
 }

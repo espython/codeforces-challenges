@@ -4,33 +4,47 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 import static java.lang.Integer.parseInt;
 
-public class CapitalOrSmall {
+public class Calculator {
+    record NumbersRecord(long x, long y) {
+    }
+
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter pw = new PrintWriter(System.out);
 
         // Your solution logic goes here
-        String s1 = fr.nextLine();
-        char c = s1.charAt(0);
-        if (c >= '0' && c <= '9') {
-            pw.println("IS DIGIT");
-        } else if (c >= 'A' && c <= 'Z') {
-            pw.println("ALPHA");
-            pw.println("IS CAPITAL");
+        String s = fr.nextLine();
 
-        } else if (c >= 'a' && c <= 'z') {
-            pw.println("ALPHA");
-            pw.println("IS SMALL");
-
+        if (s.contains("+")) {
+            NumbersRecord n = calculate(s, "\\+");
+            pw.println(n.x + n.y);
+        } else if (s.contains("-")) {
+            NumbersRecord n = calculate(s, "\\-");
+            pw.println(n.x - n.y);
+        } else if (s.contains("*")) {
+            NumbersRecord n = calculate(s, "\\*");
+            pw.println(n.x * n.y);
+        }
+        else if (s.contains("/")) {
+            NumbersRecord n = calculate(s, "\\/");
+            pw.println(n.x / n.y);
         }
 
 
         pw.flush();
         pw.close();
+    }
+
+    static NumbersRecord calculate(String s, String sign) {
+        String[] split = s.split(sign);
+
+        return new NumbersRecord(parseInt(split[0]), parseInt(split[1]));
+
     }
 
     static class FastReader {
@@ -74,5 +88,4 @@ public class CapitalOrSmall {
             return str;
         }
     }
-
 }

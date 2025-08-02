@@ -1,4 +1,4 @@
-//package AssiutSheet1;
+package AssiutSheet1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,32 +6,28 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
-public class CapitalOrSmall {
+public class AgeInDays {
     public static void main(String[] args) {
         FastReader fr = new FastReader();
         PrintWriter pw = new PrintWriter(System.out);
+        double x = fr.nextDouble();
+        double years = Math.floor(x / 365);
+        double yearReminder = x % 365;
+        double months = Math.floor(yearReminder / 30);
+        double days = Math.floor(yearReminder % 30);
 
-        // Your solution logic goes here
-        String s1 = fr.nextLine();
-        char c = s1.charAt(0);
-        if (c >= '0' && c <= '9') {
-            pw.println("IS DIGIT");
-        } else if (c >= 'A' && c <= 'Z') {
-            pw.println("ALPHA");
-            pw.println("IS CAPITAL");
-
-        } else if (c >= 'a' && c <= 'z') {
-            pw.println("ALPHA");
-            pw.println("IS SMALL");
-
-        }
+        pw.println(String.format("%d years", (int) years));
+        pw.println(String.format("%d months", (int) months));
+        pw.println(String.format("%d days", (int) days));
 
 
         pw.flush();
         pw.close();
     }
+
 
     static class FastReader {
         BufferedReader br;
@@ -61,7 +57,7 @@ public class CapitalOrSmall {
         }
 
         double nextDouble() {
-            return Double.parseDouble(next());
+            return parseDouble(next());
         }
 
         String nextLine() {
@@ -74,5 +70,4 @@ public class CapitalOrSmall {
             return str;
         }
     }
-
 }
